@@ -1,0 +1,232 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-11-25T05:11:11.580Z",
+    "end": "2024-11-25T05:11:23.584Z",
+    "duration": 12004,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9d665e03-ba42-40f8-a5f1-10a8b3844826",
+      "title": "",
+      "fullFile": "C:\\Users\\domin\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\Escritorio\\Celulares\\Celulares\\test\\test_phone_store.js",
+      "file": "\\test\\test_phone_store.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+          "title": "Pruebas Phone Store",
+          "fullFile": "C:\\Users\\domin\\OneDrive - Instituto Tecnológico de Las Américas (ITLA)\\Escritorio\\Celulares\\Celulares\\test\\test_phone_store.js",
+          "file": "\\test\\test_phone_store.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Pruebas Phone Store\"",
+              "fullTitle": "Pruebas Phone Store \"before all\" hook in \"Pruebas Phone Store\"",
+              "timedOut": false,
+              "duration": 819,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (!fs.existsSync(screenshotDir)){\n    fs.mkdirSync(screenshotDir, { recursive: true });\n}\ndriver = await new Builder().forBrowser('chrome').build();\nawait driver.manage().window().maximize();",
+              "err": {},
+              "uuid": "e91fa3ae-b835-4223-ac2c-a4b0861e34e4",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"before each\" hook in \"Pruebas Phone Store\"",
+              "fullTitle": "Pruebas Phone Store \"before each\" hook in \"Pruebas Phone Store\"",
+              "timedOut": false,
+              "duration": 772,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get('file://' + path.resolve(__dirname, '../src/phones.html'));",
+              "err": {},
+              "uuid": "e3e1d96f-082a-4fe8-9476-dfde540d4404",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Pruebas Phone Store\"",
+              "fullTitle": "Pruebas Phone Store \"after all\" hook in \"Pruebas Phone Store\"",
+              "timedOut": false,
+              "duration": 47,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (driver) {\n    await driver.quit();\n}",
+              "err": {},
+              "uuid": "9211b442-d65f-4b9a-a1f6-65a1182defc2",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "HU001 - Búsqueda de Teléfonos",
+              "fullTitle": "Pruebas Phone Store HU001 - Búsqueda de Teléfonos",
+              "timedOut": false,
+              "duration": 1180,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const searchInput = await driver.findElement(By.css('.search-bar input'));\nawait searchInput.sendKeys('iPhone');\nawait driver.sleep(1000);\n\nconst visibleProducts = await driver.findElements(By.css('.producto-phone[style=\"display: block;\"]'));\nassert(visibleProducts.length > 0);\nawait takeScreenshot(driver, 'busqueda-telefono');",
+              "err": {},
+              "uuid": "ffce0294-e3fb-4b63-b1fd-a5b4332988fb",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU002 - Agregar al Carrito",
+              "fullTitle": "Pruebas Phone Store HU002 - Agregar al Carrito",
+              "timedOut": false,
+              "duration": 1199,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const botonAgregar = await driver.findElement(By.className('btn-agregar-telefono'));\nconst contadorInicial = await driver.findElement(By.className('carrito-cantidad')).getText();\n\nawait botonAgregar.click();\nawait driver.sleep(1000);\n\nconst contadorNuevo = await driver.findElement(By.className('carrito-cantidad')).getText();\nassert.notEqual(contadorInicial, contadorNuevo);\nawait takeScreenshot(driver, 'agregar-al-carrito');",
+              "err": {},
+              "uuid": "5d6a9721-519f-47b6-93e9-d3a9c012227b",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU003 - Ver Carrito",
+              "fullTitle": "Pruebas Phone Store HU003 - Ver Carrito",
+              "timedOut": false,
+              "duration": 1231,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const botonAgregar = await driver.findElement(By.className('btn-agregar-telefono'));\nawait botonAgregar.click();\nawait driver.sleep(1000);\n\nconst carritoIcon = await driver.findElement(By.className('carrito-phones'));\nawait carritoIcon.click();\n\nconst modalCarrito = await driver.wait(until.elementLocated(By.id('modal-carrito-phones')), 5000);\nassert(await modalCarrito.isDisplayed());\nawait takeScreenshot(driver, 'ver-carrito');",
+              "err": {},
+              "uuid": "cbfa0df0-6f5d-410f-84f0-a509f74b3c6a",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU004 - Gestión de Cantidad",
+              "fullTitle": "Pruebas Phone Store HU004 - Gestión de Cantidad",
+              "timedOut": false,
+              "duration": 1219,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.className('btn-agregar-telefono')).click();\nawait driver.sleep(1000);\nawait driver.findElement(By.className('carrito-phones')).click();\n\nconst botonIncrementar = await driver.wait(until.elementLocated(By.className('incrementar-cantidad')), 5000);\nawait botonIncrementar.click();\n\nconst cantidad = await driver.findElement(By.className('cantidad-phones')).getText();\nassert.equal(cantidad, '2');\nawait takeScreenshot(driver, 'gestion-cantidad');",
+              "err": {},
+              "uuid": "c06fd529-7653-4605-af58-12b4f03d3bb5",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "HU005 - Proceso de Pago",
+              "fullTitle": "Pruebas Phone Store HU005 - Proceso de Pago",
+              "timedOut": false,
+              "duration": 1264,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.findElement(By.className('btn-agregar-telefono')).click();\nawait driver.sleep(1000);\nawait driver.findElement(By.className('carrito-phones')).click();\n\nconst botonPagar = await driver.wait(until.elementLocated(By.id('pagar-phones')), 5000);\nawait botonPagar.click();\n\nawait driver.wait(until.alertIsPresent());\nconst alert = await driver.switchTo().alert();\nawait alert.accept();\n\nconst contadorCarrito = await driver.findElement(By.className('carrito-cantidad')).getText();\nassert.equal(contadorCarrito, '0');\nawait takeScreenshot(driver, 'proceso-pago');",
+              "err": {},
+              "uuid": "2a874465-2469-4b07-8671-70d720d379ba",
+              "parentUUID": "aca3ce5f-d211-4515-81f9-d9986a5d1dec",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ffce0294-e3fb-4b63-b1fd-a5b4332988fb",
+            "5d6a9721-519f-47b6-93e9-d3a9c012227b",
+            "cbfa0df0-6f5d-410f-84f0-a509f74b3c6a",
+            "c06fd529-7653-4605-af58-12b4f03d3bb5",
+            "2a874465-2469-4b07-8671-70d720d379ba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6093,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 30000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.8.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
